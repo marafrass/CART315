@@ -89,6 +89,8 @@ public class PlayerCharacterController : MonoBehaviour
     public bool hasJumpedThisFrame { get; private set; }
     public bool isDead { get; private set; }
     public bool isCrouching { get; private set; }
+
+    public bool isDashing { get; private set; }
     public float RotationMultiplier
     {
         get
