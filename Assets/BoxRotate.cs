@@ -17,6 +17,11 @@ public class BoxRotate : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        this.transform.Rotate(rotation);
+
+        if (Input.GetKey(KeyCode.R))
+        {
+            this.transform.Rotate(rotation);
+        }
+        
     }
 }
