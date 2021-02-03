@@ -8,6 +8,7 @@ public class Raycast : MonoBehaviour
     public Camera maincamera;
     public GameObject prefab;
 
+    int delay = 15;
 
     // Start is called before the first frame update
     void Start()
@@ -20,22 +21,31 @@ public class Raycast : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0))
-        { 
-        
-        
+        if (Input.GetKey(KeyCode.E))
+        {
 
-            Debug.Log("Clicked");
-
-            Ray clickray = maincamera.ViewportPointToRay(Input.mousePosition);
-            RaycastHit result;
-            if (Physics.Raycast(clickray, out result))
+            delay += 1;
+            if (delay >= 15)
             {
-                GameObject.Instantiate(prefab, result.point, Quaternion.identity);
 
-            }
-               
+
+                Debug.Log("Clicked");
+
+                Ray clickray = maincamera.ScreenPointToRay(Input.mousePosition);
+                RaycastHit result;
+                if (Physics.Raycast(clickray, out result))
+                {
+                    GameObject.Instantiate(prefab, result.point, Quaternion.identity);
+
+                }
+                delay = 0;
+
+            }   
         
+        }
+        else
+        {
+            delay = 15;
         }
     }
 }
